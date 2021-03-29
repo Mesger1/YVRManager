@@ -1,0 +1,30 @@
+MainWindow {
+    background-color: #7dc042;
+}
+
+QComboBox {
+    font-size: 14pt;
+    color:white;
+    background-color: #7dc042;
+}
+QPushButton:disabled {
+    background-color: #444444;
+    color:gray;
+}
+QPushButton:hover {
+    background-color: #7dc042;
+    color:gray;
+}
+QCheckBox {
+    color: blue;
+}
+QStatusBar {
+    color: white;
+}
+QPushButton {
+    background-color: #7dc042;
+    color:#ffffff;
+}
+
+
+
