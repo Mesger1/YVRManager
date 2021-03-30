@@ -15,6 +15,10 @@
 #include "defines.h"
 #include <QComboBox>
 #include <QPushButton>
+#include <QIcon>
+#include <QLabel>
+#include <QDir>
+#include <QMessageBox>
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -37,6 +41,7 @@ private:
     bool flagVisibility = false;
     bool forcequit = false;
     QSystemTrayIcon *trayIcon;
+    QIcon icon;
     Worker *worker;
 private slots:
     void closeEvent(QCloseEvent *event);

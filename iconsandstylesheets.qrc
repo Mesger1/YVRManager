@@ -1,0 +1,6 @@
+<RCC>
+    <qresource prefix="/">
+        <file>stylesheet.qss</file>
+        <file>images/icon-32.png</file>
+    </qresource>
+</RCC>

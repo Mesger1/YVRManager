@@ -7,7 +7,7 @@ CONFIG += c++11
 # You can make your code fail to compile if it uses deprecated APIs.
 # In order to do so, uncomment the following line.
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
-
+RC_FILE = yvrmanager.rc
 SOURCES += \
     main.cpp \
     mainwindow.cpp \
@@ -27,20 +27,14 @@ HEADERS += \
 FORMS += \
     mainwindow.ui
 
-TRANSLATIONS += \
-    YVR-Manager_en_150.ts
-
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
 QMAKE_LFLAGS_WINDOWS += /MANIFESTUAC:"level='requireAdministrator'"
-#RC_FILE = yvrmanager.rc
 
 DISTFILES += \
     stylesheet.qss
 
-
-DEFINES +=  APP_NAME=\\\"AppName\\\"
-
-QMAKE_TARGET_DESCRIPTION = "Whatever"
+RESOURCES += \
+    iconsandstylesheets.qrc

@@ -1,3 +1,1 @@
-#include <windows.h>
-
-CREATEPROCESS_MANIFEST_RESOURCE_ID RT_MANIFEST "yvrmanager.manifest"
+IDI_ICON1               ICON    DISCARDABLE     "icon.ico"

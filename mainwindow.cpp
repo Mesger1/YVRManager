@@ -5,12 +5,14 @@ MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
 {
-    //Icon stuff
-    QPixmap oPixmap(32,32);
-    oPixmap.load ("icon.tif");
-    QIcon oIcon( oPixmap );
-    trayIcon = new QSystemTrayIcon(oIcon);
 
+
+    QPixmap pix(":/images/icon-32.png");
+    icon = QIcon(pix);
+
+
+
+    trayIcon = new QSystemTrayIcon(icon,this);
     //Contextmenu build
     QMenu* sysTrayMenu = new QMenu(); // want to get a context menu from system tray
     QAction *logYawVRTrackerDataAction =new QAction("LogUDP");
@@ -32,13 +34,16 @@ MainWindow::MainWindow(QWidget *parent)
     connect(exitApp,SIGNAL(triggered()),this,SLOT(onExit()));
 
 
+
+
     trayIcon->setVisible(true);
 
     //  trayIcon->showMessage("Test Message", "Text", QSystemTrayIcon::Information, 1000);
 
 
     ui->setupUi(this);
-    this->setWindowIcon(oIcon);
+
+    this->setWindowIcon(icon);
     this->setWindowTitle("YVR-Manager");
 
     worker = new Worker();
@@ -55,6 +60,11 @@ MainWindow::MainWindow(QWidget *parent)
 
 
     this->ui->discnctButton->setEnabled(false);
+    this->ui->cnctButton->setEnabled(false);
+
+
+    this->show();
+    trayIcon->show();
 
 
 }
@@ -88,7 +98,7 @@ void MainWindow::addYaw(QString ip , int port, QString yawname){
     if(this->ui->yawVRDeviceCombo->findText(ip,Qt::MatchContains) == -1){
         this->ui->yawVRDeviceCombo->addItem(yawname + " (" + ip + ":" + QString::number(port) + ")");
         trayIcon->showMessage(yawname , "Found at ip " + ip, QSystemTrayIcon::Information, 1000);
-
+        this->ui->cnctButton->setEnabled(true);
 #ifdef INFO
         qDebug() << "Added " <<  yawname + " (" + ip + ":" + QString::number(port) + ")";
 #endif
