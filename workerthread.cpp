@@ -5,8 +5,11 @@ Worker::Worker()
 {
 
     timer = new QTimer(this);
+    networkscannerTimer = new QTimer(this);
     connect(timer,SIGNAL(timeout()),this,SLOT(run()));
+    connect(networkscannerTimer,SIGNAL(timeout()),this,SLOT(refreshNetworkIfaces()));
     timer->start(10);
+    networkscannerTimer->start(3000);
 
 
     udpPoller = new UDPPoller();
@@ -22,7 +25,10 @@ Worker::Worker()
 //    parent->getDisconnectButton()->setEnabled(false);
 
     networkIPV4List = getNetworkInterfaces();
+}
 
+void Worker::refreshNetworkIfaces(){
+    networkIPV4List = getNetworkInterfaces();
 }
 
 void Worker::writeMmf(bool _isWriteMmf){

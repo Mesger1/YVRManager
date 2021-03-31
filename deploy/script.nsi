@@ -2,7 +2,7 @@
 Name "YVR Manager Installer"
 
 ; The file to write
-OutFile "Setup.exe"
+OutFile "YVR-Installer.exe"
 
 ; The default installation directory
 InstallDir "C:\Program Files (x86)\YVRManager"
@@ -37,6 +37,12 @@ File "platforms\qdirect2d.dll"
 File "platforms\qminimal.dll"
 File "platforms\qoffscreen.dll"
 File "platforms\qwindows.dll"
+
+SectionEnd
+
+Section "Fix Firewall Settings"
+
+ExecShell "runas" "netsh advfirewall firewall add allowedprogram $INSTDIR\YVR-Manager.exe YVR=Manager ENABLE"
 
 SectionEnd
 

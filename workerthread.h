@@ -16,6 +16,7 @@ private:
     UDPPoller *udpPoller;
     TCPPoller *tcpPoller;
     QTimer *timer;
+    QTimer *networkscannerTimer;
     QStringList networkIPV4List;
     QStringList getNetworkInterfaces();
     QComboBox *yawCBox;
@@ -28,6 +29,7 @@ public:
     TCPPoller* getTCPPoller();
 public slots:
     void run();
+    void refreshNetworkIfaces();
     void writeMmf(bool isWriteMmf);
 };
 
