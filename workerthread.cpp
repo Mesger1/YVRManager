@@ -6,7 +6,7 @@ Worker::Worker()
 
     timer = new QTimer(this);
     connect(timer,SIGNAL(timeout()),this,SLOT(run()));
-    timer->start(0);
+    timer->start(10);
 
 
     udpPoller = new UDPPoller();
@@ -21,6 +21,7 @@ Worker::Worker()
 
 //    parent->getDisconnectButton()->setEnabled(false);
 
+    networkIPV4List = getNetworkInterfaces();
 
 }
 
@@ -60,8 +61,8 @@ QStringList Worker::getNetworkInterfaces(){
 
 void Worker::run() {
 
-    networkIPV4List = getNetworkInterfaces();
     QString currentIP = networkIPV4List.at(interfaceNr);
+
     udpPoller->init(currentIP,50020);
 #ifdef DEBUG
     qDebug() << "Trying IP " << currentIP;

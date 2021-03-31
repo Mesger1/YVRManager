@@ -66,8 +66,8 @@ void TCPPoller::run() {
                 break;
             }
             case state::SEND_TCP_CHECK : {
-                const char cmdBuf[] = "\x30yvr";
-                QByteArray data = QByteArray::fromRawData(cmdBuf, sizeof(cmdBuf)-1);
+                const char cmdBuf[] = { '0','G','A','M','E','Y','V','R','M','a','n','a','g','e','r'};
+                QByteArray data = QByteArray::fromRawData(cmdBuf, sizeof(cmdBuf));
                 if(sendData(data,ip)){
                     yawvr_tcp_state = state::AWAITING_CHECK_RESPONSE_AVAILABLE;
                 }
