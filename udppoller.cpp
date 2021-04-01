@@ -39,7 +39,7 @@ bool UDPPoller::processUDP(){
 #endif
                 QString data = datagram.toStdString().c_str();
                 if(data.startsWith("YAWDEVICE")){
-                    QStringList list = data.split(';',QString::SkipEmptyParts);
+                    QStringList list = data.split(';');
                     yaw_ip = sender.toString();
                     yaw_nr = list.at(1);
                     yaw_name = list.at(2);
@@ -49,11 +49,13 @@ bool UDPPoller::processUDP(){
                     //emit startTCP(yaw_ip,yaw_port.toInt());
                     return 1;
                 }else if(data.startsWith("S") && data.endsWith("]")){
-                    QStringList regexData = data.split(QRegExp("\\[|\\]"));
+                    QStringList regexData = data.split(QRegularExpression("\\[|\\]"));
+                    memset(&imuData,'\0',sizeof(imuData));
                     imuData.yaw = regexData.at(1).toFloat();
                     imuData.pitch = regexData.at(3).toFloat();
                     imuData.roll = regexData.at(5).toFloat();
                     imuData.battery = regexData.at(7).toFloat();
+                    yawvr_udp_state = state::GETTING_IMU_DATA;
                     emit emitIMUData(imuData);
                 }
             }

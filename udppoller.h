@@ -6,6 +6,7 @@
 #include <QString>
 #include <QNetworkDatagram>
 #include <QTimer>
+#include <QRegularExpression>
 #include "defines.h";
 
 class UDPPoller : public QObject

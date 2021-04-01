@@ -20,10 +20,6 @@ Worker::Worker()
     udpPoller->init(networkIPV4List.at(0),50020);
 
 
-//    yawCBox = qobject_cast<MainWindow*>(parent)->getYawVRDevices();
-
-//    parent->getDisconnectButton()->setEnabled(false);
-
     networkIPV4List = getNetworkInterfaces();
 }
 
@@ -69,7 +65,6 @@ void Worker::run() {
 
     QString currentIP = networkIPV4List.at(interfaceNr);
 
-    udpPoller->init(currentIP,50020);
 #ifdef DEBUG
     qDebug() << "Trying IP " << currentIP;
 #endif

@@ -6,12 +6,11 @@
 #include <stdio.h>
 #include <conio.h>
 #include <tchar.h>
-#pragma comment(lib, "user32.lib")
 
 
-//#define TRACE
-//#define DEBUG
-//#define INFO
+#define TRACE
+#define DEBUG
+#define INFO
 
 struct yawvr_data {
     float yaw;

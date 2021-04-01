@@ -15,8 +15,8 @@ MainWindow::MainWindow(QWidget *parent)
     trayIcon = new QSystemTrayIcon(icon,this);
     //Contextmenu build
     QMenu* sysTrayMenu = new QMenu(); // want to get a context menu from system tray
-    QAction *logYawVRTrackerDataAction =new QAction("LogUDP");
-    QAction *makeMemoryMapAvailableAction = new QAction("Generate MemoryMap");
+    //QAction *logYawVRTrackerDataAction =new QAction("LogUDP");
+    //QAction *makeMemoryMapAvailableAction = new QAction("Generate MemoryMap");
     QAction *exitApp = new QAction("Close YVRManager");
 
 
@@ -149,8 +149,9 @@ void MainWindow::toggleMainwindowVisibility(){
 void MainWindow::closeEvent(QCloseEvent *event){
     if(!forcequit){
         event->ignore();
-        toggleMainwindowVisibility();
     }
+    toggleMainwindowVisibility();
+
 }
 
 void MainWindow::onExit(){

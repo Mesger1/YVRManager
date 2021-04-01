@@ -38,7 +38,7 @@ private:
     QThread *thread;
     Ui::MainWindow *ui;
     void toggleMainwindowVisibility();
-    bool flagVisibility = false;
+    bool flagVisibility = true;
     bool forcequit = false;
     QSystemTrayIcon *trayIcon;
     QIcon icon;
