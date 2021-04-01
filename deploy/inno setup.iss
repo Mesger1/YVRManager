@@ -27,3 +27,4 @@ Source: "platforms\qwindows.dll"; DestDir: "{app}\platforms"
 
 [Icons]
 Name: "{group}\YVR-Manager"; Filename: "{app}\YVR-Manager.exe"
+Name: "{commondesktop}\YVR-Manager"; Filename: "{app}\YVR-Manager"; IconFilename: "{app}\YVR-Manager.exe"
